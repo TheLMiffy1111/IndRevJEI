@@ -24,12 +24,13 @@
 		"indrevjei.mixins.json"
 	],
 	"depends": {
-		"minecraft": ">=1.18.2- <1.19-",
+		"minecraft": ">=1.19- <1.19.3-",
 		"jei": "*",
 		"jeidrawables": "*",
 		"indrev": "*"
 	},
 	"conflicts": {
-		"rei_plugin_compatibilities": "*"
+		"rei_plugin_compatibilities": "*",
+		"extra-mod-integrations": "*"
 	}
 }

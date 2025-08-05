@@ -24,7 +24,7 @@ public class EnergyItemMixin extends Item {
 	@Override
 	public void fillItemCategory(CreativeModeTab category, NonNullList<ItemStack> items) {
 		super.fillItemCategory(category, items);
-		if(allowdedIn(category)) {
+		if(allowedIn(category)) {
 			ItemStack stack = new ItemStack(this);
 			EnergyStorage storage = EnergyutilsKt.energyOf(stack);
 			if(storage != null && storage.getCapacity() > 0) {

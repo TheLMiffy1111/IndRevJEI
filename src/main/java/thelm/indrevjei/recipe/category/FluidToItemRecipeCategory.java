@@ -10,7 +10,6 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.Font;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import thelm.indrevjei.gui.render.ProgressBarDrawable;
 import thelm.jeidrawables.JEIDrawables;
 
@@ -37,7 +36,7 @@ public class FluidToItemRecipeCategory<R extends IRRecipe> extends AbstractIRRec
 		Font font = font();
 		double chance = getOutputChance(recipe, 0);
 		if(chance < 1) {
-			Component chanceComponent = new TextComponent((int)(chance * 100) + "%");
+			Component chanceComponent = Component.literal((int)(chance * 100) + "%");
 			font.draw(poseStack, chanceComponent, 54 - font.width(chanceComponent) / 2, 37, 0xFF808080);
 		}
 		Component timeComponent = getTimeComponent(recipe);

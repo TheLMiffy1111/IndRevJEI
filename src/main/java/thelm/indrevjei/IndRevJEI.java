@@ -23,10 +23,13 @@ import me.steven.indrev.recipes.machines.SmelterRecipe;
 import me.steven.indrev.registry.IRBlockRegistry;
 import me.steven.indrev.registry.IRItemRegistry;
 import me.steven.indrev.registry.MachineRegistry;
+import me.steven.indrev.utils.EnergyutilsKt;
 import me.steven.indrev.utils.UtilsKt;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.helpers.IJeiHelpers;
+import mezz.jei.api.ingredients.subtypes.IIngredientSubtypeInterpreter;
+import mezz.jei.api.ingredients.subtypes.UidContext;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
@@ -38,11 +41,12 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
+import team.reborn.energy.api.EnergyStorage;
 import thelm.indrevjei.gui.handler.IRInventoryRecipeClickAreaHandler;
 import thelm.indrevjei.ingredient.subtype.EnergyItemSubtypeInterpreter;
 import thelm.indrevjei.recipe.MiningRigRecipe;
@@ -111,14 +115,14 @@ public class IndRevJEI implements IModPlugin {
 			return;
 		}
 
-		registration.addRecipeCategories(new ItemToTwoItemRecipeCategory<>(PULVERIZER, new TranslatableComponent("indrev.category.rei.pulverizing")));
-		registration.addRecipeCategories(new TwoItemToItemRecipeCategory<>(INFUSER, new TranslatableComponent("indrev.category.rei.infusing")));
-		registration.addRecipeCategories(new ItemToItemRecipeCategory<>(COMPRESSOR, new TranslatableComponent("indrev.category.rei.compressing")));
-		registration.addRecipeCategories(new ItemToItemRecipeCategory<>(RECYCLER, new TranslatableComponent("indrev.category.rei.recycling")));
-		registration.addRecipeCategories(new ItemFluidToItemFluidRecipeCategory<>(FLUID_INFUSER, new TranslatableComponent("indrev.category.rei.fluid_infusing")));
-		registration.addRecipeCategories(new FluidToItemRecipeCategory<>(CONDENSER, new TranslatableComponent("indrev.category.rei.condensing")));
-		registration.addRecipeCategories(new ItemToFluidRecipeCategory<>(SMELTER, new TranslatableComponent("indrev.category.rei.smelting")));
-		registration.addRecipeCategories(new ItemToFourItemRecipeCategory<>(SAWMILL, new TranslatableComponent("indrev.category.rei.sawmill")));
+		registration.addRecipeCategories(new ItemToTwoItemRecipeCategory<>(PULVERIZER, Component.translatable("indrev.category.rei.pulverizing")));
+		registration.addRecipeCategories(new TwoItemToItemRecipeCategory<>(INFUSER, Component.translatable("indrev.category.rei.infusing")));
+		registration.addRecipeCategories(new ItemToItemRecipeCategory<>(COMPRESSOR, Component.translatable("indrev.category.rei.compressing")));
+		registration.addRecipeCategories(new ItemToItemRecipeCategory<>(RECYCLER, Component.translatable("indrev.category.rei.recycling")));
+		registration.addRecipeCategories(new ItemFluidToItemFluidRecipeCategory<>(FLUID_INFUSER, Component.translatable("indrev.category.rei.fluid_infusing")));
+		registration.addRecipeCategories(new FluidToItemRecipeCategory<>(CONDENSER, Component.translatable("indrev.category.rei.condensing")));
+		registration.addRecipeCategories(new ItemToFluidRecipeCategory<>(SMELTER, Component.translatable("indrev.category.rei.smelting")));
+		registration.addRecipeCategories(new ItemToFourItemRecipeCategory<>(SAWMILL, Component.translatable("indrev.category.rei.sawmill")));
 		registration.addRecipeCategories(new ModuleRecipeCategory());
 		registration.addRecipeCategories(new LaserRecipeCategory());
 
@@ -240,6 +244,10 @@ public class IndRevJEI implements IModPlugin {
 	public boolean checkDisabled() {
 		if(FabricLoader.getInstance().isModLoaded("rei_plugin_compatibilities")) {
 			LOGGER.warn("IndRevJEI is disabled with REIPC as Industrial Revolution has native REI support");
+			return true;
+		}
+		if(FabricLoader.getInstance().isModLoaded("extra-mod-integrations")) {
+			LOGGER.warn("IndRevJEI is disabled with ExMI");
 			return true;
 		}
 		return false;

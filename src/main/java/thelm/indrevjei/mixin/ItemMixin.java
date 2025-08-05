@@ -12,7 +12,7 @@ import net.minecraft.world.item.Item;
 @Mixin(Item.class)
 public class ItemMixin {
 
-	@Inject(method = "allowdedIn", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "allowedIn", at = @At("HEAD"), cancellable = true)
 	public void modifyAllowedIn(CallbackInfoReturnable<Boolean> info) {
 		if(HiddenitemsKt.hide(Registry.ITEM.getKey(Item.class.cast(this)))) {
 			info.setReturnValue(false);

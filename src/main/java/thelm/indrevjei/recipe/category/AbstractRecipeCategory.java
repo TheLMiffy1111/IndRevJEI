@@ -20,7 +20,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
@@ -44,16 +43,6 @@ public abstract class AbstractRecipeCategory<R> implements IRecipeCategory<R> {
 		this.recipeType = recipeType;
 		this.title = title;
 		background = new BlankDrawable(getWidth(), getHeight());
-	}
-
-	@Override
-	public ResourceLocation getUid() {
-		return recipeType.getUid();
-	}
-
-	@Override
-	public Class<? extends R> getRecipeClass() {
-		return recipeType.getRecipeClass();
 	}
 
 	@Override

@@ -9,15 +9,13 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.client.gui.Font;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import thelm.indrevjei.IndRevJEI;
 import thelm.indrevjei.gui.render.ProgressBarDrawable;
 import thelm.jeidrawables.JEIDrawables;
 
 public class LaserRecipeCategory extends AbstractIRRecipeCategory<LaserRecipe> {
 
-	public static final Component TITLE = new TranslatableComponent("block.indrev.laser_emitter_mk4");
+	public static final Component TITLE = Component.translatable("block.indrev.laser_emitter_mk4");
 
 	public LaserRecipeCategory() {
 		super(IndRevJEI.LASER, TITLE);
@@ -40,7 +38,7 @@ public class LaserRecipeCategory extends AbstractIRRecipeCategory<LaserRecipe> {
 		Font font = font();
 		double chance = getOutputChance(recipe, 0);
 		if(chance < 1) {
-			Component chanceComponent = new TextComponent((int)(chance * 100) + "%");
+			Component chanceComponent = Component.literal((int)(chance * 100) + "%");
 			font.draw(poseStack, chanceComponent, 56 - font.width(chanceComponent) / 2, 37, 0xFF808080);
 		}
 		int energyReq = recipe.getTicks();
@@ -58,7 +56,7 @@ public class LaserRecipeCategory extends AbstractIRRecipeCategory<LaserRecipe> {
 			energyKey = "indrevjei.tooltip.lf.mega";
 			energyText = TIME_FORMAT.format(energyReq / 1000000D);
 		}
-		Component energyComponent = new TranslatableComponent(energyKey, energyText);
+		Component energyComponent = Component.translatable(energyKey, energyText);
 		font.draw(poseStack, energyComponent, getWidth() - font.width(energyComponent), 0, 0xFF808080);
 	}
 }

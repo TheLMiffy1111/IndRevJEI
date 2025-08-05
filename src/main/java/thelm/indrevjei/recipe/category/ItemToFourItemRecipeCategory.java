@@ -10,7 +10,6 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.Font;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import thelm.indrevjei.gui.render.ProgressBarDrawable;
 import thelm.jeidrawables.JEIDrawables;
 
@@ -46,12 +45,12 @@ public class ItemToFourItemRecipeCategory<R extends IRRecipe> extends AbstractIR
 		for(int i = 0; i < 2; ++i) {
 			double chance = getOutputChance(recipe, i);
 			if(chance < 1) {
-				Component chanceComponent = new TextComponent((int)(chance * 100) + "%");
+				Component chanceComponent = Component.literal((int)(chance * 100) + "%");
 				font.draw(poseStack, chanceComponent, 52 + i * 18 - font.width(chanceComponent) / 2, 0, 0xFF808080);
 			}
 			chance = getOutputChance(recipe, i + 2);
 			if(chance < 1) {
-				Component chanceComponent = new TextComponent((int)(chance * 100) + "%");
+				Component chanceComponent = Component.literal((int)(chance * 100) + "%");
 				font.draw(poseStack, chanceComponent, 52 + i * 18 - font.width(chanceComponent) / 2, 47, 0xFF808080);
 			}
 		}

@@ -10,7 +10,6 @@ import mezz.jei.api.recipe.RecipeType;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.ResourceAmount;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.item.ItemStack;
 
 public abstract class AbstractIRRecipeCategory<R extends IRRecipe> extends AbstractRecipeCategory<R> {
@@ -59,6 +58,6 @@ public abstract class AbstractIRRecipeCategory<R extends IRRecipe> extends Abstr
 	}
 
 	public Component getTimeComponent(IRRecipe recipe) {
-		return new TextComponent(TIME_FORMAT.format(recipe.getTicks() / 20D) + "s");
+		return Component.literal(TIME_FORMAT.format(recipe.getTicks() / 20D) + "s");
 	}
 }

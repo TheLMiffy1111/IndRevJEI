@@ -25,7 +25,6 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import thelm.indrevjei.IndRevJEI;
 import thelm.jeidrawables.JEIDrawables;
-import thelm.jeidrawables.gui.render.BlankDrawable;
 import thelm.jeidrawables.gui.render.ResourceDrawable;
 
 public abstract class AbstractRecipeCategory<R> implements IRecipeCategory<R> {

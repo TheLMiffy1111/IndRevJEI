@@ -1,10 +1,6 @@
 package thelm.indrevjei.recipe.category;
 
-import me.steven.indrev.api.machines.Tier;
 import me.steven.indrev.recipes.machines.LaserRecipe;
-import me.steven.indrev.registry.IRBlockRegistry;
-import me.steven.indrev.registry.IRItemRegistry;
-import me.steven.indrev.registry.MachineRegistry;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
@@ -13,7 +9,6 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
 import thelm.indrevjei.IndRevJEI;
 import thelm.indrevjei.gui.render.ProgressBarDrawable;
 import thelm.jeidrawables.JEIDrawables;

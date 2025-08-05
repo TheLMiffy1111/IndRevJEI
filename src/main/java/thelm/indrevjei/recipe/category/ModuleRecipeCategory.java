@@ -1,13 +1,12 @@
 package thelm.indrevjei.recipe.category;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-
 import me.steven.indrev.recipes.machines.ModuleRecipe;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import thelm.indrevjei.IndRevJEI;
@@ -50,14 +49,14 @@ public class ModuleRecipeCategory extends AbstractIRRecipeCategory<ModuleRecipe>
 	}
 
 	@Override
-	public void draw(ModuleRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack poseStack, double mouseX, double mouseY) {
+	public void draw(ModuleRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 		Font font = font();
 		double chance = getOutputChance(recipe, 0);
 		if(chance < 1) {
 			Component chanceComponent = Component.literal((int)(chance * 100) + "%");
-			font.draw(poseStack, chanceComponent, 46 - font.width(chanceComponent) / 2, 59, 0xFF808080);
+			guiGraphics.drawString(font, chanceComponent, 46 - font.width(chanceComponent) / 2, 59, 0xFF808080, false);
 		}
 		Component timeComponent = getTimeComponent(recipe);
-		font.draw(poseStack, timeComponent, getWidth() - font.width(timeComponent), 0, 0xFF808080);
+		guiGraphics.drawString(font, timeComponent, getWidth() - font.width(timeComponent), 0, 0xFF808080, false);
 	}
 }

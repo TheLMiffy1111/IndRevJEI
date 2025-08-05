@@ -1,14 +1,19 @@
 package thelm.indrevjei.recipe.category;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-
+import me.steven.indrev.api.machines.Tier;
 import me.steven.indrev.recipes.machines.LaserRecipe;
+import me.steven.indrev.registry.IRBlockRegistry;
+import me.steven.indrev.registry.IRItemRegistry;
+import me.steven.indrev.registry.MachineRegistry;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
 import thelm.indrevjei.IndRevJEI;
 import thelm.indrevjei.gui.render.ProgressBarDrawable;
 import thelm.jeidrawables.JEIDrawables;
@@ -33,13 +38,17 @@ public class LaserRecipeCategory extends AbstractIRRecipeCategory<LaserRecipe> {
 	}
 
 	@Override
-	public void draw(LaserRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack poseStack, double mouseX, double mouseY) {
-		ProgressBarDrawable.RIGHT_PROCESS_EMPTY.draw(poseStack, 21, 14);
+	public void createRecipeExtras(IRecipeExtrasBuilder builder, LaserRecipe recipe, IFocusGroup focuses) {
+		builder.addDrawable(ProgressBarDrawable.RIGHT_PROCESS_EMPTY, 21, 14);
+	}
+
+	@Override
+	public void draw(LaserRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 		Font font = font();
 		double chance = getOutputChance(recipe, 0);
 		if(chance < 1) {
 			Component chanceComponent = Component.literal((int)(chance * 100) + "%");
-			font.draw(poseStack, chanceComponent, 56 - font.width(chanceComponent) / 2, 37, 0xFF808080);
+			guiGraphics.drawString(font, chanceComponent, 56 - font.width(chanceComponent) / 2, 37, 0xFF808080, false);
 		}
 		int energyReq = recipe.getTicks();
 		String energyKey;
@@ -57,6 +66,6 @@ public class LaserRecipeCategory extends AbstractIRRecipeCategory<LaserRecipe> {
 			energyText = TIME_FORMAT.format(energyReq / 1000000D);
 		}
 		Component energyComponent = Component.translatable(energyKey, energyText);
-		font.draw(poseStack, energyComponent, getWidth() - font.width(energyComponent), 0, 0xFF808080);
+		guiGraphics.drawString(font, energyComponent, getWidth() - font.width(energyComponent), 0, 0xFF808080, false);
 	}
 }

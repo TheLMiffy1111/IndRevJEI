@@ -37,12 +37,10 @@ public abstract class AbstractRecipeCategory<R> implements IRecipeCategory<R> {
 
 	public final RecipeType<R> recipeType;
 	public final Component title;
-	public final IDrawable background;
 
 	public AbstractRecipeCategory(RecipeType<R> recipeType, Component title) {
 		this.recipeType = recipeType;
 		this.title = title;
-		background = new BlankDrawable(getWidth(), getHeight());
 	}
 
 	@Override
@@ -56,12 +54,9 @@ public abstract class AbstractRecipeCategory<R> implements IRecipeCategory<R> {
 	}
 
 	@Override
-	public IDrawable getBackground() {
-		return background;
-	}
-
 	public abstract int getWidth();
 
+	@Override
 	public int getHeight() {
 		return 46;
 	}
@@ -100,6 +95,7 @@ public abstract class AbstractRecipeCategory<R> implements IRecipeCategory<R> {
 		long amount = fluidStack.amount() / (FluidConstants.BUCKET / fluidHelper().bucketVolume());
 		long fraction = fluidStack.amount() % (FluidConstants.BUCKET / 1000);
 		CompoundTag data = fluidStack.resource().copyNbt();
+		@SuppressWarnings("removal")
 		IRecipeSlotBuilder slot = builder.addSlot(ingredientRole, x, y).setBackground(TANK_BOTTOM, -1, -1).setOverlay(TANK_TOP, -1, -1).setFluidRenderer(Math.max(amount, 1), false, 14, 41).addTooltipCallback(JEIDrawables.appendFraction(fraction));
 		if(fluid != Fluids.EMPTY && fluidStack.amount() > 0) {
 			slot.addFluidStack(fluid, amount, data);

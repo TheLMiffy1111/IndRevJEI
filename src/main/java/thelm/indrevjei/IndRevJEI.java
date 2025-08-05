@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.common.collect.Streams;
 
+import me.steven.indrev.IndustrialRevolution;
 import me.steven.indrev.api.machines.Tier;
 import me.steven.indrev.config.IRConfig;
 import me.steven.indrev.gui.IRInventoryScreen;
@@ -23,13 +24,10 @@ import me.steven.indrev.recipes.machines.SmelterRecipe;
 import me.steven.indrev.registry.IRBlockRegistry;
 import me.steven.indrev.registry.IRItemRegistry;
 import me.steven.indrev.registry.MachineRegistry;
-import me.steven.indrev.utils.EnergyutilsKt;
 import me.steven.indrev.utils.UtilsKt;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.helpers.IJeiHelpers;
-import mezz.jei.api.ingredients.subtypes.IIngredientSubtypeInterpreter;
-import mezz.jei.api.ingredients.subtypes.UidContext;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
@@ -37,16 +35,18 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.ISubtypeRegistration;
 import mezz.jei.api.runtime.IJeiRuntime;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
-import team.reborn.energy.api.EnergyStorage;
+import thelm.indrevjei.event.CreativeTabEventHandler;
 import thelm.indrevjei.gui.handler.IRInventoryRecipeClickAreaHandler;
 import thelm.indrevjei.ingredient.subtype.EnergyItemSubtypeInterpreter;
 import thelm.indrevjei.recipe.MiningRigRecipe;
@@ -81,6 +81,10 @@ public class IndRevJEI implements IModPlugin {
 	public static final RecipeType<LaserRecipe> LASER = createRecipeType(LaserRecipe.Companion.getTYPE(), LaserRecipe.class);
 
 	public static final RecipeType<MiningRigRecipe> MINING_RIG = new RecipeType<>(UtilsKt.identifier("mining_rig"), MiningRigRecipe.class);
+
+	public IndRevJEI() {
+		ItemGroupEvents.modifyEntriesEvent(IndustrialRevolution.INSTANCE.getMOD_GROUP_KEY()).register(new CreativeTabEventHandler());;
+	}
 
 	@Override
 	public ResourceLocation getPluginUid() {
@@ -149,7 +153,7 @@ public class IndRevJEI implements IModPlugin {
 
 		if(IRConfig.miningRigConfig != null) {
 			registration.addRecipes(MINING_RIG, IRConfig.miningRigConfig.getAllowedTags().entrySet().stream().
-					flatMap(entry -> Streams.stream(Registry.ITEM.getTagOrEmpty(TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(entry.getKey())))).
+					flatMap(entry -> Streams.stream(BuiltInRegistries.ITEM.getTagOrEmpty(TagKey.create(Registries.ITEM, new ResourceLocation(entry.getKey())))).
 							filter(Holder::isBound).
 							map(holder -> new MiningRigRecipe(holder.value(), entry.getValue()))).
 					toList());
@@ -248,6 +252,10 @@ public class IndRevJEI implements IModPlugin {
 		}
 		if(FabricLoader.getInstance().isModLoaded("extra-mod-integrations")) {
 			LOGGER.warn("IndRevJEI is disabled with ExMI");
+			return true;
+		}
+		if(FabricLoader.getInstance().isModLoaded("indrev-emi-plugin")) {
+			LOGGER.warn("IndRevJEI is disabled with IndRev EMI Plugin");
 			return true;
 		}
 		return false;

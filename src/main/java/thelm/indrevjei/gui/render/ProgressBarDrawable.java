@@ -1,10 +1,9 @@
 package thelm.indrevjei.gui.render;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-
 import me.steven.indrev.gui.widgets.machines.WCustomBarKt;
 import me.steven.indrev.recipes.machines.IRRecipe;
 import mezz.jei.api.gui.drawable.IDrawable;
+import net.minecraft.client.gui.GuiGraphics;
 import thelm.jeidrawables.gui.render.AnimatedDrawable;
 import thelm.jeidrawables.gui.render.ResourceDrawable;
 
@@ -73,9 +72,9 @@ public class ProgressBarDrawable implements IDrawable {
 	}
 
 	@Override
-	public void draw(PoseStack poseStack, int xOffset, int yOffset) {
-		base.draw(poseStack, xOffset, yOffset);
-		overlay.draw(poseStack, xOffset, yOffset);
+	public void draw(GuiGraphics guiGraphics, int xOffset, int yOffset) {
+		base.draw(guiGraphics, xOffset, yOffset);
+		overlay.draw(guiGraphics, xOffset, yOffset);
 	}
 
 	public enum Direction {

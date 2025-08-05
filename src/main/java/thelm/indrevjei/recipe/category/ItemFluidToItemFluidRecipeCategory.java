@@ -1,14 +1,14 @@
 package thelm.indrevjei.recipe.category;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-
 import me.steven.indrev.recipes.machines.IRRecipe;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import thelm.indrevjei.gui.render.ProgressBarDrawable;
 import thelm.jeidrawables.JEIDrawables;
@@ -38,15 +38,19 @@ public class ItemFluidToItemFluidRecipeCategory<R extends IRRecipe> extends Abst
 	}
 
 	@Override
-	public void draw(R recipe, IRecipeSlotsView recipeSlotsView, PoseStack poseStack, double mouseX, double mouseY) {
-		ProgressBarDrawable.right(recipe).draw(poseStack, 39, 12);
+	public void createRecipeExtras(IRecipeExtrasBuilder builder, R recipe, IFocusGroup focuses) {
+		builder.addDrawable(ProgressBarDrawable.right(recipe), 39, 12);
+	}
+
+	@Override
+	public void draw(R recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 		Font font = font();
 		double chance = getOutputChance(recipe, 0);
 		if(chance < 1) {
 			Component chanceComponent = Component.literal((int)(chance * 100) + "%");
-			font.draw(poseStack, chanceComponent, 70 - font.width(chanceComponent) / 2, 31, 0xFF808080);
+			guiGraphics.drawString(font, chanceComponent, 70 - font.width(chanceComponent) / 2, 31, 0xFF808080, false);
 		}
 		Component timeComponent = getTimeComponent(recipe);
-		font.draw(poseStack, timeComponent, 78 - font.width(timeComponent), 0, 0xFF808080);
+		guiGraphics.drawString(font, timeComponent, 78 - font.width(timeComponent), 0, 0xFF808080, false);
 	}
 }

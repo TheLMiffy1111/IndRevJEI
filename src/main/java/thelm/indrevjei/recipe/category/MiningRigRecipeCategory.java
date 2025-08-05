@@ -1,12 +1,12 @@
 package thelm.indrevjei.recipe.category;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import thelm.indrevjei.IndRevJEI;
 import thelm.indrevjei.gui.render.ProgressBarDrawable;
@@ -38,10 +38,14 @@ public class MiningRigRecipeCategory extends AbstractRecipeCategory<MiningRigRec
 	}
 
 	@Override
-	public void draw(MiningRigRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack poseStack, double mouseX, double mouseY) {
-		ProgressBarDrawable.RIGHT_PROCESS_EMPTY.draw(poseStack, 21, 14);
+	public void createRecipeExtras(IRecipeExtrasBuilder builder, MiningRigRecipe recipe, IFocusGroup focuses) {
+		builder.addDrawable(ProgressBarDrawable.RIGHT_PROCESS_EMPTY, 21, 14);
+	}
+
+	@Override
+	public void draw(MiningRigRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 		Font font = font();
 		Component energyComponent = Component.translatable("gui.indrev.tooltip.lftick", recipe.getEnergyReq());
-		font.draw(poseStack, energyComponent, getWidth() - font.width(energyComponent), 0, 0xFF808080);
+		guiGraphics.drawString(font, energyComponent, getWidth() - font.width(energyComponent), 0, 0xFF808080, false);
 	}
 }

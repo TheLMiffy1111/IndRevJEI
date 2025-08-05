@@ -1,0 +1,45 @@
+modLoader = "lowcodefml"
+loaderVersion = "[47,)"
+license = "MIT"
+issueTrackerURL = "https://github.com/TheLMiffy1111/IndRevJEI/issues"
+
+[properties]
+	"connector:placeholder" = true
+
+[[mods]]
+	modId = "techrebornjei"
+	version = "0@VERSION@"
+	displayName = "IndRevJEI"
+	description = "An addon to Industrial Revolution that adds JEI support."
+	logoFile = "indrevjei.logo.png"
+	authors = "TheLMiffy1111"
+
+[[dependencies.indrevjei]]
+	modId = "minecraft"
+	versionRange = "[1.20,1.20.2)"
+	mandatory = true
+
+[[dependencies.indrevjei]]
+	modId = "connector"
+	versionRange = "*"
+	mandatory = true
+
+[[dependencies.indrevjei]]
+	modId = "connectorextras"
+	versionRange = "*"
+	mandatory = true
+
+[[dependencies.indrevjei]]
+	modId = "jei"
+	versionRange = "*"
+	mandatory = true
+
+[[dependencies.indrevjei]]
+	modId = "jeidrawables"
+	versionRange = "*"
+	mandatory = true
+
+[[dependencies.indrevjei]]
+	modId = "indrev"
+	versionRange = "*"
+	mandatory = true

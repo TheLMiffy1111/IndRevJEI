@@ -1,0 +1,35 @@
+{
+	"schemaVersion": 1,
+	"id": "indrevjei",
+	"version": "0@VERSION@",
+	"name": "IndRevJEI",
+	"description": "An addon to Industrial Revolution that adds JEI support.",
+	"authors": [
+		"TheLMiffy1111"
+	],
+	"contact": {
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/indrevjei",
+		"sources": "https://github.com/TheLMiffy1111/IndRevJEI",
+		"issues": "https://github.com/TheLMiffy1111/IndRevJEI/issues"
+	},
+	"license": "MIT",
+	"icon": "indrevjei.logo.png",
+	"environment": "client",
+	"entrypoints": {
+		"jei_mod_plugin": [
+			"thelm.indrevjei.IndRevJEI"
+		]
+	},
+	"mixins": [
+		"indrevjei.mixins.json"
+	],
+	"depends": {
+		"minecraft": ">=1.18.2- <1.19-",
+		"jei": "*",
+		"jeidrawables": "*",
+		"indrev": "*"
+	},
+	"conflicts": {
+		"rei_plugin_compatibilities": "*"
+	}
+}

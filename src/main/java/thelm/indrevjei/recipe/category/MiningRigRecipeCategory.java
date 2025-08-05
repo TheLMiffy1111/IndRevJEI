@@ -2,14 +2,12 @@ package thelm.indrevjei.recipe.category;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
-import me.steven.indrev.recipes.machines.LaserRecipe;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.client.gui.Font;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import thelm.indrevjei.IndRevJEI;
 import thelm.indrevjei.gui.render.ProgressBarDrawable;

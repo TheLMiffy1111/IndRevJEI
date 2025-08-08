@@ -44,7 +44,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
 import thelm.indrevjei.event.CreativeTabEventHandler;
 import thelm.indrevjei.gui.handler.IRInventoryRecipeClickAreaHandler;
@@ -168,62 +167,62 @@ public class IndRevJEI implements IModPlugin {
 
 		MachineRegistry.Companion machines = MachineRegistry.Companion;
 		for(Tier tier : machines.getPULVERIZER_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getPULVERIZER_REGISTRY().block(tier)), PULVERIZER);
+			registration.addRecipeCatalyst(machines.getPULVERIZER_REGISTRY().block(tier), PULVERIZER);
 		}
 		for(Tier tier : machines.getPULVERIZER_FACTORY_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getPULVERIZER_FACTORY_REGISTRY().block(tier)), PULVERIZER);
+			registration.addRecipeCatalyst(machines.getPULVERIZER_FACTORY_REGISTRY().block(tier), PULVERIZER);
 		}
 		for(Tier tier : machines.getSOLID_INFUSER_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getSOLID_INFUSER_REGISTRY().block(tier)), INFUSER);
+			registration.addRecipeCatalyst(machines.getSOLID_INFUSER_REGISTRY().block(tier), INFUSER);
 		}
 		for(Tier tier : machines.getSOLID_INFUSER_FACTORY_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getSOLID_INFUSER_FACTORY_REGISTRY().block(tier)), INFUSER);
+			registration.addRecipeCatalyst(machines.getSOLID_INFUSER_FACTORY_REGISTRY().block(tier), INFUSER);
 		}
 		for(Tier tier : machines.getCOMPRESSOR_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getCOMPRESSOR_REGISTRY().block(tier)), COMPRESSOR);
+			registration.addRecipeCatalyst(machines.getCOMPRESSOR_REGISTRY().block(tier), COMPRESSOR);
 		}
 		for(Tier tier : machines.getCOMPRESSOR_FACTORY_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getCOMPRESSOR_FACTORY_REGISTRY().block(tier)), COMPRESSOR);
+			registration.addRecipeCatalyst(machines.getCOMPRESSOR_FACTORY_REGISTRY().block(tier), COMPRESSOR);
 		}
 		for(Tier tier : machines.getRECYCLER_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getRECYCLER_REGISTRY().block(tier)), RECYCLER);
+			registration.addRecipeCatalyst(machines.getRECYCLER_REGISTRY().block(tier), RECYCLER);
 		}
 		for(Tier tier : machines.getFLUID_INFUSER_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getFLUID_INFUSER_REGISTRY().block(tier)), FLUID_INFUSER);
+			registration.addRecipeCatalyst(machines.getFLUID_INFUSER_REGISTRY().block(tier), FLUID_INFUSER);
 		}
 		for(Tier tier : machines.getCONDENSER_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getCONDENSER_REGISTRY().block(tier)), CONDENSER);
+			registration.addRecipeCatalyst(machines.getCONDENSER_REGISTRY().block(tier), CONDENSER);
 		}
 		for(Tier tier : machines.getSMELTER_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getSMELTER_REGISTRY().block(tier)), SMELTER);
+			registration.addRecipeCatalyst(machines.getSMELTER_REGISTRY().block(tier), SMELTER);
 		}
 		for(Tier tier : machines.getSAWMILL_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getSAWMILL_REGISTRY().block(tier)), SAWMILL);
+			registration.addRecipeCatalyst(machines.getSAWMILL_REGISTRY().block(tier), SAWMILL);
 		}
 		for(Tier tier : machines.getMODULAR_WORKBENCH_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getMODULAR_WORKBENCH_REGISTRY().block(tier)), MODULE);
+			registration.addRecipeCatalyst(machines.getMODULAR_WORKBENCH_REGISTRY().block(tier), MODULE);
 		}
 		for(Tier tier : machines.getLASER_EMITTER_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getLASER_EMITTER_REGISTRY().block(tier)), LASER);
+			registration.addRecipeCatalyst(machines.getLASER_EMITTER_REGISTRY().block(tier), LASER);
 		}
-		registration.addRecipeCatalyst(new ItemStack(IRBlockRegistry.INSTANCE.getCAPSULE_BLOCK()), LASER);
+		registration.addRecipeCatalyst(IRBlockRegistry.INSTANCE.getCAPSULE_BLOCK(), LASER);
 
 		for(Tier tier : machines.getMINING_RIG_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getMINING_RIG_REGISTRY().block(tier)), MINING_RIG);
+			registration.addRecipeCatalyst(machines.getMINING_RIG_REGISTRY().block(tier), MINING_RIG);
 		}
-		registration.addRecipeCatalyst(new ItemStack(IRBlockRegistry.INSTANCE.getDRILL_BOTTOM()), MINING_RIG);
+		registration.addRecipeCatalyst(IRBlockRegistry.INSTANCE.getDRILL_BOTTOM(), MINING_RIG);
 
 		for(Tier tier : machines.getELECTRIC_FURNACE_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getELECTRIC_FURNACE_REGISTRY().block(tier)), RecipeTypes.SMELTING, RecipeTypes.BLASTING, RecipeTypes.SMOKING);
+			registration.addRecipeCatalyst(machines.getELECTRIC_FURNACE_REGISTRY().block(tier), RecipeTypes.SMELTING, RecipeTypes.BLASTING, RecipeTypes.SMOKING);
 		}
 		for(Tier tier : machines.getELECTRIC_FURNACE_FACTORY_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getELECTRIC_FURNACE_FACTORY_REGISTRY().block(tier)), RecipeTypes.SMELTING, RecipeTypes.BLASTING, RecipeTypes.SMOKING);
+			registration.addRecipeCatalyst(machines.getELECTRIC_FURNACE_FACTORY_REGISTRY().block(tier), RecipeTypes.SMELTING, RecipeTypes.BLASTING, RecipeTypes.SMOKING);
 		}
-		registration.addRecipeCatalyst(new ItemStack(IRItemRegistry.INSTANCE.getBLAST_FURNACE_UPGRADE()), RecipeTypes.BLASTING);
-		registration.addRecipeCatalyst(new ItemStack(IRItemRegistry.INSTANCE.getSMOKER_UPGRADE()), RecipeTypes.SMOKING);
+		registration.addRecipeCatalyst(IRItemRegistry.INSTANCE.getBLAST_FURNACE_UPGRADE(), RecipeTypes.BLASTING);
+		registration.addRecipeCatalyst(IRItemRegistry.INSTANCE.getSMOKER_UPGRADE(), RecipeTypes.SMOKING);
 
 		for(Tier tier : machines.getCOAL_GENERATOR_REGISTRY().getTiers()) {
-			registration.addRecipeCatalyst(new ItemStack(machines.getCOAL_GENERATOR_REGISTRY().block(tier)), RecipeTypes.FUELING);
+			registration.addRecipeCatalyst(machines.getCOAL_GENERATOR_REGISTRY().block(tier), RecipeTypes.FUELING);
 		}
 	}
 

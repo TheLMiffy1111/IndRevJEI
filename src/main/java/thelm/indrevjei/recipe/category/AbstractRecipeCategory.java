@@ -60,8 +60,10 @@ public abstract class AbstractRecipeCategory<R> implements IRecipeCategory<R> {
 		return background;
 	}
 
+	@Override
 	public abstract int getWidth();
 
+	@Override
 	public int getHeight() {
 		return 46;
 	}

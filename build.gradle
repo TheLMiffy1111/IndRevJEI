@@ -176,7 +176,7 @@ dependencies {
 
 	// JEI
 	modImplementation("mezz.jei:jei-1.19.2-fabric:11.8.1.1034") {transitive = false}
-	include(modImplementation("thelm.jeidrawables:JEIDrawables-Fabric:19.2.3"))
+	include(modImplementation("thelm.jeidrawables:JEIDrawables-Fabric:19.2.4"))
 
 	// Industrial Revolution External Dependencies
 	modImplementation "net.fabricmc:fabric-language-kotlin:1.13.4+kotlin.2.2.0"

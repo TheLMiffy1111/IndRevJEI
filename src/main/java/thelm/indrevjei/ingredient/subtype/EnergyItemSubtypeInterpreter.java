@@ -16,6 +16,6 @@ public class EnergyItemSubtypeInterpreter implements IIngredientSubtypeInterpret
 				return "f";
 			}
 		}
-		return IIngredientSubtypeInterpreter.NONE;
+		return NONE;
 	}
 }

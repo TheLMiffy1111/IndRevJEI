@@ -20,7 +20,7 @@ issueTrackerURL = "https://github.com/TheLMiffy1111/IndRevJEI/issues"
 	mandatory = true
 
 [[dependencies.indrevjei]]
-	modId = "connector"
+	modId = "connectormod"
 	versionRange = "*"
 	mandatory = true
 

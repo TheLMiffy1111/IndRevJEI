@@ -86,7 +86,7 @@ repositories {
 	exclusiveContent {
 		forRepository {
 			maven {
-				url = "https://server.bbkr.space/artifactory/libs-release"
+				url = "https://server.bbkr.space/artifactory/libs-release/"
 			}
 		}
 		filter {
@@ -101,6 +101,16 @@ repositories {
 		}
 		filter {
             includeGroup "alexiil.mc.lib"
+		}
+	}
+	exclusiveContent {
+		forRepository {
+			maven {
+				url = "https://maven.draylar.dev/releases/"
+			}
+		}
+		filter {
+            includeGroup "draylar.omega-config"
 		}
 	}
 	exclusiveContent {
@@ -195,7 +205,7 @@ dependencies {
 	// Industrial Revolution Included Dependencies
 	modImplementation "teamreborn:energy:2.3.0"
 	modImplementation "io.github.cottonmc:LibGui:5.4.3+1.18.2"
-	modImplementation "curse.maven:omega-config-558000:3612206"
+	modImplementation "draylar.omega-config:omega-config-base:1.2.3-1.18.1"
 	modImplementation("com.github.Draylar:magna:1.7.1-1.18") {transitive = false}
 	modImplementation "alexiil.mc.lib:libblockattributes-all:0.10.2"
 	modImplementation "com.github.emilyploszaj:step-height-entity-attribute:1.0.1"

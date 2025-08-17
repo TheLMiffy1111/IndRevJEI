@@ -76,11 +76,22 @@ repositories {
 	exclusiveContent {
 		forRepository {
 			maven {
-				url = "https://server.bbkr.space/artifactory/libs-release"
+				url = "https://server.bbkr.space/artifactory/libs-release/"
 			}
 		}
 		filter {
             includeGroup "io.github.cottonmc"
+		}
+	}
+	exclusiveContent {
+		forRepository {
+			maven {
+				url = "https://maven.draylar.dev/releases/"
+			}
+		}
+		filter {
+            includeGroup "dev.draylar.omega-config"
+			includeGroup "dev.draylar"
 		}
 	}
 	exclusiveContent {
@@ -100,7 +111,6 @@ repositories {
 			}
 		}
 		filter {
-			includeGroup "com.github.Draylar"
 			includeGroup "com.github.emilyploszaj"
 		}
 	}
@@ -175,8 +185,8 @@ dependencies {
 	// Industrial Revolution Included Dependencies
 	modImplementation "teamreborn:energy:3.0.0"
 	modImplementation "io.github.cottonmc:LibGui:8.1.1+1.20.1"
-	modImplementation "curse.maven:omega-config-558000:3612206"
-	modImplementation("com.github.Draylar:magna:1.20.1-SNAPSHOT") {transitive = false}
+	modImplementation "dev.draylar.omega-config:omega-config-base:1.4.0+1.20.1"
+	modImplementation("dev.draylar:magna:1.10.1+1.20.1") {transitive = false}
 	modImplementation "com.github.emilyploszaj:step-height-entity-attribute:1.2.0"
 
 	// Industrial Revolution

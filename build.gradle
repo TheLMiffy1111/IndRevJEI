@@ -156,6 +156,7 @@ tasks.withType(JavaCompile).configureEach {
 
 loom {
 	silentMojangMappingsLicense()
+	mixin.defaultRefmapName = "${modId}.refmap.json"
 	runs {
 		configureEach {
 			property "fabric.log.console.level", "debug"
@@ -183,7 +184,7 @@ dependencies {
 
 	// JEI
 	modImplementation("mezz.jei:jei-1.19.2-fabric:11.8.1.1034") {transitive = false}
-	include(modImplementation("thelm.jeidrawables:JEIDrawables-Fabric:19.2.4"))
+	include(modImplementation("thelm.jeidrawables:JEIDrawables-Fabric:19.2.7"))
 
 	// Industrial Revolution External Dependencies
 	modImplementation "net.fabricmc:fabric-language-kotlin:1.13.7+kotlin.2.2.21"
